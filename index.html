@@ -3,885 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERACODING.COM - CHECKOUT</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <meta name="description" content="Jasa CV Profesional – Indah Parawansa">
+    <title>Indah Parawansa | Jasa CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        :root {
-            --primary: #4361ee;
-            --primary-hover: #3a56d4;
-            --success: #2ecc71;
-            --success-hover: #27ae60;
-            --danger: #e74c3c;
-            --danger-hover: #c0392b;
-            --dark: #2d3436;
-            --dark-light: #636e72;
-            --light: #f5f7fa;
-            --light-gray: #dfe6e9;
-            --border: #b2bec3;
-            --shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+        
         body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+            font-family: 'Inter', system_ui, sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
         }
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 20px 15px;
+
+        .link-card {
+            transition: background-color 0.2s ease;
         }
-        .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            padding: 24px;
-            margin-bottom: 24px;
-            border: 1px solid var(--light-gray);
-            transition: all 0.3s ease;
+        
+        .link-card:hover {
+            background-color: #141414;
         }
-        .card:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+
+        .avatar {
+            transition: transform 0.2s ease;
         }
-        h1, h2, h3 {
-            color: var(--dark);
-            margin-bottom: 16px;
-        }
-        h1 { 
-            font-size: 24px;
-            color: var(--primary);
-        }
-        h2 { font-size: 20px; }
-        h3 { font-size: 18px; }
-        .form-group {
-            margin-bottom: 16px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 14px;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 15px;
-            transition: all 0.3s;
-        }
-        input:not(:placeholder-shown):valid, 
-        select:valid, 
-        textarea:valid {
-            border-color: var(--success);
-        }
-        input:not(:placeholder-shown):invalid, 
-        select:invalid, 
-        textarea:invalid {
-            border-color: var(--danger);
-        }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
-        }
-        button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        button:hover {
-            background: var(--primary-hover);
-            transform: translateY(-1px);
-        }
-        button i {
-            font-size: 16px;
-        }
-        .btn-block {
-            display: flex;
-            width: 100%;
-        }
-        .btn-success {
-            background: var(--success);
-        }
-        .btn-success:hover {
-            background: var(--success-hover);
-        }
-        .btn-danger {
-            background: var(--danger);
-        }
-        .btn-danger:hover {
-            background: var(--danger-hover);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-        .btn-outline:hover {
-            background: rgba(67, 97, 238, 0.1);
-        }
-        .payment-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 12px;
-            margin: 16px 0;
-        }
-        .payment-method {
-            border: 1px solid var(--light-gray);
-            padding: 16px 12px;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: white;
-        }
-        .payment-method:hover, .payment-method.active {
-            border-color: var(--primary);
-            background: rgba(67, 97, 238, 0.05);
-            transform: translateY(-2px);
-        }
-        .payment-method i {
-            font-size: 34px;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-        .payment-method.active i {
-            color: var(--primary);
-        }
-        .hidden {
-            display: none !important;
-        }
-        .order-summary {
-            background: rgba(67, 97, 238, 0.03);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border: 1px dashed var(--primary);
-        }
-        .order-summary-item {
-            margin-bottom: 12px;
-            display: flex;
-        }
-        .order-summary-item:last-child {
-            margin-bottom: 0;
-        }
-        .order-summary-label {
-            font-weight: 600;
-            min-width: 140px;
-            color: var(--dark);
-        }
-        .timer {
-            font-size: 22px;
-            font-weight: bold;
-            color: var(--danger);
-            text-align: center;
-            margin: 20px 0;
-            padding: 12px;
-            background: rgba(231, 76, 60, 0.1);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .timer-title {
-            font-size: 14px;
-            font-weight: normal;
-            color: var(--dark-light);
-        }
-        .bank-details {
-            background: white;
-            border: 1px solid var(--light-gray);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        .bank-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-        .bank-icon {
-            width: 48px;
-            height: 48px;
-            margin-right: 12px;
-            background: rgba(67, 97, 238, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .bank-icon i {
-            font-size: 24px;
-            color: var(--primary);
-        }
-        .bank-text {
-            flex: 1;
-        }
-        .bank-name {
-            font-weight: 600;
-            font-size: 16px;
-            color: var(--dark);
-        }
-        .bank-number {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--dark);
-            letter-spacing: 1px;
-        }
-        .bank-info-item {
-            margin-bottom: 8px;
-        }
-        .bank-copy {
-            margin-top: 12px;
-        }
-        .copy-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.3s;
-        }
-        .copy-btn:hover {
-            background: var(--primary-hover);
-        }
-        .copy-btn i {
-            font-size: 14px;
-        }
-        .action-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 24px;
-        }
-        .note {
-            font-size: 13px;
-            color: var(--dark-light);
-            margin-top: 12px;
-            text-align: center;
-            line-height: 1.5;
-        }
-        .error-message {
-            color: var(--danger);
-            font-size: 13px;
-            margin-top: 6px;
-            display: none;
-        }
-        input:invalid + .error-message,
-        select:invalid + .error-message {
-            display: block;
-        }
-        .qris-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .qris-image {
-            max-width: 240px;
-            margin: 0 auto;
-            border: 1px solid var(--light-gray);
-            border-radius: 8px;
-            padding: 12px;
-        }
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            z-index: 1000;
-            display: none;
-            animation: fadeIn 0.3s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @media (min-width: 768px) {
-            .container {
-                max-width: 640px;
-                padding: 30px 20px;
-            }
-        }
-        @media (max-width: 480px) {
-            .container {
-                padding: 16px 12px;
-            }
-            .card {
-                padding: 20px;
-            }
-            .payment-methods {
-                grid-template-columns: 1fr;
-            }
-            .action-buttons {
-                grid-template-columns: 1fr;
-            }
+        
+        .avatar:hover {
+            transform: scale(1.03);
         }
     </style>
 </head>
-<body>
-    <!-- Toast Notification -->
-    <div id="toast" class="toast"></div>
-    
-    <div class="container">
-        <!-- Step 1: Formulir Order -->
-        <div id="orderForm">
-            <div class="card">
-                <h1><i class="fas fa-laptop-code"></i>CHECKOUT</h1>
-                <p>Isi formulir berikut untuk memesan course coding pilihan Anda.</p>
-                
-                <div class="form-group">
-                    <label for="nama">Nama Lengkap*</label>
-                    <input type="text" id="nama" placeholder="Nama lengkap Anda" required>
-                    <div class="error-message">Harap isi nama lengkap</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email*</label>
-                    <input type="email" id="email" placeholder="email@contoh.com" required>
-                    <div class="error-message">Harap isi email yang valid</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="wa">Nomor WhatsApp*</label>
-                    <input type="tel" id="wa" placeholder="Contoh: 081234567890" required>
-                    <div class="error-message">Harap isi nomor WhatsApp</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="course">Konfirmasi course*</label>
-                    <select id="course" required>
-                        <option value="" disabled selected>-- Tap pilih --</option>
-                        <option value="Frontend Mastery" data-harga="1200000">Frontend Mastery (Rp 1.200.000)</option>
-                        <option value="Backend Pro" data-harga="1500000">Backend Pro (Rp 1.500.000)</option>
-                        <option value="Fullstack Developer" data-harga="2500000">Fullstack Developer (Rp 2.500.000)</option>
-                        <option value="Mobile Apps Expert" data-harga="1800000">Mobile Apps Expert (Rp 1.800.000)</option>
-                    </select>
-                    <div class="error-message">Harap pilih course</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="metode">Pilih Metode Belajar*</label>
-                    <select id="metode" required>
-                        <option value="" disabled selected>-- Pilih Metode --</option>
-                        <option value="Rekaman (Self Paced)">Rekaman (Self Paced) Default</option>
-                    </select>
-                    <div class="error-message">Harap pilih metode belajar</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="catatan">Catatan Tambahan (Opsional)</label>
-                    <textarea id="catatan" rows="3" placeholder="Contoh: Jadwal kelas khusus, dll."></textarea>
-                </div>
+<body class="min-h-screen py-16">
+    <div class="max-w-[340px] mx-auto px-6">
+
+        <!-- Avatar + Name -->
+        <div class="text-center mb-10">
+            <div class="mx-auto w-24 h-24 rounded-2xl overflow-hidden border border-zinc-800 mb-5">
+                <img src="https://i.ibb.co/0jZfQvY/default-cv-profile.jpg" 
+                     alt="Indah Parawansa" 
+                     class="avatar w-full h-full object-cover">
             </div>
             
-            <div class="card">
-                <h2><i class="fas fa-credit-card"></i> Pilih Metode Pembayaran*</h2>
-                
-                <div class="payment-methods">
-                    <div class="payment-method" data-method="bca">
-                        <i class="fas fa-university"></i>
-                        <h4>Bank BCA</h4>
-                    </div>
-                    <div class="payment-method" data-method="bni">
-                        <i class="fas fa-university"></i>
-                        <h4>Bank BNI</h4>
-                    </div>
-                    <div class="payment-method" data-method="qris">
-                        <i class="fas fa-qrcode"></i>
-                        <h4>QRIS</h4>
-                    </div>
-                </div>
-                
-                <div class="error-message" id="paymentError" style="display: none;">Harap pilih metode pembayaran</div>
-                
-                <button type="button" id="reviewOrder" class="btn-block">
-                    <i class="fas fa-eye"></i> Review Pesanan
-                </button>
+            <h1 class="text-3xl font-medium">Indah Parawansa</h1>
+            <p class="text-zinc-400 text-base mt-1">Jasa CV Profesional</p>
+            
+            <div class="text-xs text-zinc-500 mt-6 flex justify-center items-center gap-1">
+                <i class="fas fa-map-marker-alt"></i>
+                Jakarta
             </div>
         </div>
-        
-        <!-- Step 2: Review Order -->
-        <div id="reviewSection" class="hidden">
-            <div class="card">
-                <h1><i class="fas fa-file-invoice"></i> Review Pesanan Anda</h1>
-                
-                <div class="order-summary">
-                    <h3><i class="fas fa-clipboard-list"></i> Detail Pesanan</h3>
-                    
-                    <div class="order-summary-item">
-                        <span class="order-summary-label">Nama:</span>
-                        <span id="reviewNama"></span>
-                    </div>
-                    <div class="order-summary-item">
-                        <span class="order-summary-label">Email:</span>
-                        <span id="reviewEmail"></span>
-                    </div>
-                    <div class="order-summary-item">
-                        <span class="order-summary-label">WhatsApp:</span>
-                        <span id="reviewWa"></span>
-                    </div>
-                    <div class="order-summary-item">
-                        <span class="order-summary-label">Course:</span>
-                        <span id="reviewCourse"></span>
-                    </div>
-                    <div class="order-summary-item">
-                        <span class="order-summary-label">Metode Belajar:</span>
-                        <span id="reviewMetode"></span>
-                    </div>
-                    <div class="order-summary-item">
-                        <span class="order-summary-label">Total Pembayaran:</span>
-                        <span id="reviewHarga"></span>
-                    </div>
-                    <div class="order-summary-item">
-                        <span class="order-summary-label">Metode Bayar:</span>
-                        <span id="reviewPayment"></span>
-                    </div>
+
+        <!-- Links – Super minimal -->
+        <div class="space-y-2">
+
+            <a href="https://wa.me/6281234567890?text=Halo%20Indah,%20saya%20ingin%20konsultasi%20CV" 
+               target="_blank"
+               class="link-card flex items-center justify-between bg-zinc-900 px-6 py-4 rounded-2xl text-base">
+                <div class="flex items-center gap-3">
+                    <i class="fab fa-whatsapp text-xl text-emerald-400"></i>
+                    <span>WhatsApp</span>
                 </div>
-                
-                <div class="action-buttons">
-                    <button type="button" id="editOrder" class="btn-outline">
-                        <i class="fas fa-edit"></i> Edit Pesanan
-                    </button>
-                    <button type="button" id="continuePayment" class="btn-success">
-                        <i class="fas fa-check"></i> Lanjutkan Pembayaran
-                    </button>
+                <i class="fas fa-arrow-right text-zinc-400"></i>
+            </a>
+
+            <a href="https://drive.google.com/drive/folders/YOUR_LINK_HERE" 
+               target="_blank"
+               class="link-card flex items-center justify-between bg-zinc-900 px-6 py-4 rounded-2xl text-base">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-file-pdf text-xl text-red-400"></i>
+                    <span>Contoh CV</span>
                 </div>
-            </div>
+                <i class="fas fa-arrow-right text-zinc-400"></i>
+            </a>
+
+            <a onclick="showPricing()" 
+               class="link-card flex items-center justify-between bg-zinc-900 px-6 py-4 rounded-2xl text-base cursor-pointer">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-tags text-xl text-amber-400"></i>
+                    <span>Paket Harga</span>
+                </div>
+                <i class="fas fa-arrow-right text-zinc-400"></i>
+            </a>
+
+            <a onclick="showTestimonial()" 
+               class="link-card flex items-center justify-between bg-zinc-900 px-6 py-4 rounded-2xl text-base cursor-pointer">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-quote-left text-xl text-sky-400"></i>
+                    <span>Testimoni</span>
+                </div>
+                <i class="fas fa-arrow-right text-zinc-400"></i>
+            </a>
+
+            <a onclick="showAbout()" 
+               class="link-card flex items-center justify-between bg-zinc-900 px-6 py-4 rounded-2xl text-base cursor-pointer">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-user-circle text-xl text-zinc-400"></i>
+                    <span>Tentang Saya</span>
+                </div>
+                <i class="fas fa-arrow-right text-zinc-400"></i>
+            </a>
+
+            <a href="https://instagram.com/indahparawansa" 
+               target="_blank"
+               class="link-card flex items-center justify-between bg-zinc-900 px-6 py-4 rounded-2xl text-base">
+                <div class="flex items-center gap-3">
+                    <i class="fab fa-instagram text-xl"></i>
+                    <span>Instagram</span>
+                </div>
+                <i class="fas fa-arrow-right text-zinc-400"></i>
+            </a>
+
         </div>
-        
-        <!-- Step 3: Detail Pembayaran -->
-        <div id="paymentDetails" class="hidden">
-            <div class="card">
-                <h1><i class="fas fa-receipt"></i> Detail Pembayaran</h1>
-                <p class="note">Nomor Pesanan: <strong id="orderNumber"></strong></p>
-                
-                <div class="order-summary">
-                    <h3><i class="fas fa-shopping-cart"></i> Ringkasan Pesanan</h3>
-                    
-                    <div class="order-summary-item">
-                        <span class="order-summary-label">Nama:</span>
-                        <span id="displayNama"></span>
-                    </div>
-                    <div class="order-summary-item">
-                        <span class="order-summary-label">Course yang dipilih:</span>
-                        <span id="displayCourse"></span>
-                    </div>
-                    <div class="order-summary-item">
-                        <span class="order-summary-label">Total pembayaran:</span>
-                        <span id="displayHarga"></span>
-                    </div>
+
+        <!-- Footer super kecil -->
+        <p class="text-center text-[10px] text-zinc-600 mt-16">
+            © Indah Parawansa • Jakarta
+        </p>
+
+    </div>
+
+    <!-- Pricing Modal – sangat minimal -->
+    <div id="pricingModal" onclick="if(event.target.id==='pricingModal')hidePricing()" 
+         class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-zinc-900 max-w-[340px] w-full mx-4 rounded-3xl p-8">
+            <div class="flex justify-between mb-6">
+                <h2 class="text-xl font-medium">Paket Harga</h2>
+                <button onclick="hidePricing()" class="text-3xl text-zinc-400">×</button>
+            </div>
+            <div class="space-y-6 text-sm">
+                <div class="flex justify-between">
+                    <div>Basic</div>
+                    <div>Rp 175.000</div>
                 </div>
-                
-                <div class="timer">
-                    <div class="timer-title">Waktu tersisa untuk menyelesaikan pembayaran:</div>
-                    <div id="countdown">30:00</div>
+                <div class="flex justify-between">
+                    <div>Premium</div>
+                    <div>Rp 275.000</div>
                 </div>
-                
-                <!-- Bank Transfer -->
-                <div id="bankPayment" class="hidden">
-                    <h3><i class="fas fa-university"></i> Panduan Transfer Bank</h3>
-                    <div class="bank-details">
-                        <div class="bank-info">
-                            <div class="bank-icon">
-                                <i class="fas fa-university"></i>
-                            </div>
-                            <div class="bank-text">
-                                <div class="bank-name" id="bankName">Bank BCA</div>
-                                <div class="bank-number" id="bankAccount">1234567890</div>
-                            </div>
-                        </div>
-                        
-                        <div class="bank-info-item">
-                            <strong>Atas Nama:</strong> AKADEMI CODING INDONESIA
-                        </div>
-                        <div class="bank-info-item">
-                            <strong>Jumlah Transfer:</strong> <span id="bankAmount"></span>
-                        </div>
-                        
-                        <div class="bank-copy">
-                            <button class="copy-btn" id="copyAccountBtn">
-                                <i class="fas fa-copy"></i> Salin Nomor Rekening
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- QRIS -->
-                <div id="qrisPayment" class="hidden">
-                    <h3><i class="fas fa-qrcode"></i> Panduan Pembayaran QRIS</h3>
-                    <div class="qris-container">
-                        <img id="qrisImage" src="https://placehold.co/300" alt="Kode QRIS untuk pembayaran" class="qris-image">
-                        <p class="note">Scan QR Code diatas menggunakan aplikasi mobile banking untuk melakukan pembayaran</p>
-                    </div>
-                </div>
-                
-                <div class="note">
-                    Setelah menyelesaikan pembayaran, silahkan klik tombol konfirmasi dibawah ini.
-                    Pesanan akan dibatalkan secara otomatis jika tidak ada konfirmasi dalam 30 menit.
-                </div>
-                
-                <div class="action-buttons">
-                    <button class="btn-success" id="confirmPayment">
-                        <i class="fas fa-check-circle"></i> Konfirmasi Pembayaran
-                    </button>
-                    <button class="btn-danger" id="cancelOrder">
-                        <i class="fas fa-times-circle"></i> Batalkan Pesanan
-                    </button>
+                <div class="flex justify-between">
+                    <div>Executive</div>
+                    <div>Rp 450.000</div>
                 </div>
             </div>
+            <a href="https://wa.me/6281234567890?text=Halo%20Indah,%20saya%20mau%20pesan%20paket%20CV" 
+               target="_blank"
+               class="mt-8 block text-center bg-white text-black py-4 rounded-2xl text-base font-medium">
+                Hubungi via WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Testimoni Modal -->
+    <div id="testimonialModal" onclick="if(event.target.id==='testimonialModal')hideTestimonial()" 
+         class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-zinc-900 max-w-[340px] w-full mx-4 rounded-3xl p-8">
+            <div class="flex justify-between mb-6">
+                <h2 class="text-xl font-medium">Testimoni</h2>
+                <button onclick="hideTestimonial()" class="text-3xl text-zinc-400">×</button>
+            </div>
+            <p class="italic text-zinc-300">"CV-nya sangat profesional dan langsung lolos screening."</p>
+            <p class="text-xs text-zinc-500 mt-4">— Andi Pratama</p>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="aboutModal" onclick="if(event.target.id==='aboutModal')hideAbout()" 
+         class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-zinc-900 max-w-[340px] w-full mx-4 rounded-3xl p-8">
+            <div class="flex justify-between mb-6">
+                <h2 class="text-xl font-medium">Tentang Saya</h2>
+                <button onclick="hideAbout()" class="text-3xl text-zinc-400">×</button>
+            </div>
+            <p class="text-zinc-300 text-sm leading-relaxed">
+                HR professional dengan pengalaman 8+ tahun. Membantu Anda membuat CV yang ATS-friendly dan sesuai kebutuhan karir.
+            </p>
         </div>
     </div>
 
     <script>
-        // Fungsi utama setelah DOM siap
-        document.addEventListener('DOMContentLoaded', function() {
-            // Variabel global
-            let selectedPaymentMethod = null;
-            let countdownInterval = null;
-            let orderId = null;
-            let hargaCourse = 0;
-            
-            // Tangkap parameter URL untuk QRIS
-            const urlParams = new URLSearchParams(window.location.search);
-            const qrisImageUrl = urlParams.get('qris');
-            
-            // Set gambar QRIS jika ada parameter
-            if (qrisImageUrl) {
-                document.getElementById('qrisImage').src = qrisImageUrl;
-                document.getElementById('qrisImage').alt = "Kode QRIS untuk pembayaran";
-            }
-            
-            // Fungsi untuk format uang
-            function formatRupiah(amount) {
-                return 'Rp ' + amount.toLocaleString('id-ID');
-            }
-            
-            // Fungsi untuk menampilkan toast notifikasi
-            function showToast(message, duration = 3000) {
-                const toast = document.getElementById('toast');
-                toast.textContent = message;
-                toast.style.display = 'block';
-                
-                setTimeout(() => {
-                    toast.style.display = 'none';
-                }, duration);
-            }
-            
-            // Pilih metode pembayaran
-            document.querySelectorAll('.payment-method').forEach(method => {
-                method.addEventListener('click', function() {
-                    // Hapus active dari semua metode
-                    document.querySelectorAll('.payment-method').forEach(m => {
-                        m.classList.remove('active');
-                    });
-                    
-                    // Tambah active ke metode yang dipilih
-                    this.classList.add('active');
-                    selectedPaymentMethod = this.getAttribute('data-method');
-                    document.getElementById('paymentError').style.display = 'none';
-                });
-            });
-            
-            // Tombol Review Pesanan
-            document.getElementById('reviewOrder').addEventListener('click', function() {
-                // Validasi form
-                const nama = document.getElementById('nama').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const wa = document.getElementById('wa').value.trim();
-                const course = document.getElementById('course').value;
-                const metode = document.getElementById('metode').value;
-                
-                let isValid = true;
-                
-                // Validasi field wajib
-                if (!nama) {
-                    document.getElementById('nama').focus();
-                    isValid = false;
-                }
-                if (!email) {
-                    document.getElementById('email').focus();
-                    isValid = false;
-                }
-                if (!wa) {
-                    document.getElementById('wa').focus();
-                    isValid = false;
-                }
-                if (!course) {
-                    document.getElementById('course').focus();
-                    isValid = false;
-                }
-                if (!metode) {
-                    document.getElementById('metode').focus();
-                    isValid = false;
-                }
-                if (!selectedPaymentMethod) {
-                    document.getElementById('paymentError').style.display = 'block';
-                    isValid = false;
-                }
-                
-                if (!isValid) {
-                    showToast('Harap lengkapi semua field yang wajib diisi!');
-                    return;
-                }
-                
-                // Ambil harga dari data attribute
-                const selectedCourse = document.getElementById('course').options[document.getElementById('course').selectedIndex];
-                hargaCourse = parseInt(selectedCourse.getAttribute('data-harga'));
-                
-                // Isi data review
-                document.getElementById('reviewNama').textContent = nama;
-                document.getElementById('reviewEmail').textContent = email;
-                document.getElementById('reviewWa').textContent = wa;
-                document.getElementById('reviewCourse').textContent = course;
-                document.getElementById('reviewMetode').textContent = metode;
-                document.getElementById('reviewHarga').textContent = formatRupiah(hargaCourse);
-                
-                // Sesuaikan teks metode pembayaran
-                let paymentMethodText = '';
-                if (selectedPaymentMethod === 'qris') {
-                    paymentMethodText = 'QRIS';
-                } 
-                else if (selectedPaymentMethod === 'bca') {
-                    paymentMethodText = 'Bank BCA';
-                } 
-                else if (selectedPaymentMethod === 'bni') {
-                    paymentMethodText = 'Bank BNI';
-                }
-                
-                document.getElementById('reviewPayment').textContent = paymentMethodText;
-                
-                // Tampilkan section review
-                document.getElementById('orderForm').classList.add('hidden');
-                document.getElementById('reviewSection').classList.remove('hidden');
-            });
-            
-            // Tombol Edit Pesanan
-            document.getElementById('editOrder').addEventListener('click', function() {
-                document.getElementById('orderForm').classList.remove('hidden');
-                document.getElementById('reviewSection').classList.add('hidden');
-            });
-            
-            // Tombol Lanjutkan Pembayaran
-            document.getElementById('continuePayment').addEventListener('click', function() {
-                // Generate order ID unik
-                const timestamp = Date.now().toString();
-                const randomNum = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-                orderId = 'ORD-' + timestamp.slice(-6) + randomNum;
-                document.getElementById('orderNumber').textContent = orderId;
-                
-                // Isi data pembayaran
-                const nama = document.getElementById('nama').value.trim();
-                document.getElementById('displayNama').textContent = nama;
-                document.getElementById('displayCourse').textContent = document.getElementById('course').value;
-                document.getElementById('displayHarga').textContent = formatRupiah(hargaCourse);
-                
-                // Sesuaikan tampilan berdasarkan metode pembayaran
-                if (selectedPaymentMethod === 'qris') {
-                    // Tampilkan QRIS
-                    document.getElementById('qrisPayment').classList.remove('hidden');
-                    document.getElementById('bankPayment').classList.add('hidden');
-                } 
-                else {
-                    // Tampilkan transfer bank
-                    document.getElementById('bankPayment').classList.remove('hidden');
-                    document.getElementById('qrisPayment').classList.add('hidden');
-                    
-                    // Set data bank
-                    const bankName = document.getElementById('bankName');
-                    const bankAccount = document.getElementById('bankAccount');
-                    const bankAmount = document.getElementById('bankAmount');
-                    
-                    if (selectedPaymentMethod === 'bca') {
-                        bankName.textContent = 'Bank BCA';
-                        bankAccount.textContent = '1234567890 (a/n AKADEMI CODING INDONESIA)';
-                    } 
-                    else if (selectedPaymentMethod === 'bni') {
-                        bankName.textContent = 'Bank BNI';
-                        bankAccount.textContent = '9876543210 (a/n AKADEMI CODING INDONESIA)';
-                    }
-                    
-                    bankAmount.textContent = formatRupiah(hargaCourse);
-                }
-                
-                // Tampilkan section pembayaran
-                document.getElementById('reviewSection').classList.add('hidden');
-                document.getElementById('paymentDetails').classList.remove('hidden');
-                
-                // Mulai countdown pembayaran
-                startCountdown();
-            });
-            
-            // Fungsi untuk tombol salin rekening
-            document.getElementById('copyAccountBtn').addEventListener('click', function() {
-                const bankAccount = document.getElementById('bankAccount').textContent;
-                const accountNumber = bankAccount.split(' ')[0]; // Ambil hanya angka rekeningnya
-                
-                navigator.clipboard.writeText(accountNumber).then(function() {
-                    showToast('Nomor rekening berhasil disalin!');
-                }, function() {
-                    // Fallback jika clipboard API tidak tersedia
-                    const textarea = document.createElement('textarea');
-                    textarea.value = accountNumber;
-                    textarea.style.position = 'fixed';
-                    document.body.appendChild(textarea);
-                    textarea.select();
-                    
-                    try {
-                        document.execCommand('copy');
-                        showToast('Nomor rekening berhasil disalin!');
-                    } catch (err) {
-                        showToast('Gagal menyalin nomor rekening');
-                    }
-                    
-                    document.body.removeChild(textarea);
-                });
-            });
-            
-            // Fungsi countdown pembayaran
-            function startCountdown() {
-                let minutes = 30;
-                let seconds = 0;
-                
-                // Update tampilan awal
-                updateCountdownDisplay(minutes, seconds);
-                
-                // Jalankan countdown setiap detik
-                countdownInterval = setInterval(function() {
-                    if (seconds === 0) {
-                        if (minutes === 0) {
-                            // Waktu habis, batalkan pesanan
-                            clearInterval(countdownInterval);
-                            showToast('Waktu pembayaran telah habis. Pesanan dibatalkan.');
-                            resetForm();
-                            return;
-                        }
-                        minutes--;
-                        seconds = 59;
-                    } else {
-                        seconds--;
-                    }
-                    
-                    updateCountdownDisplay(minutes, seconds);
-                }, 1000);
-            }
-            
-            // Update tampilan countdown
-            function updateCountdownDisplay(minutes, seconds) {
-                const displayMinutes = minutes < 10 ? '0' + minutes : minutes;
-                const displaySeconds = seconds < 10 ? '0' + seconds : seconds;
-                document.getElementById('countdown').textContent = displayMinutes + ':' + displaySeconds;
-            }
-            
-            // Konfirmasi pembayaran
-            document.getElementById('confirmPayment').addEventListener('click', function() {
-                const nama = document.getElementById('nama').value.trim();
-                const wa = document.getElementById('wa').value.trim();
-                const course = document.getElementById('course').value;
-                const metode = document.getElementById('metode').value;
-                const catatan = document.getElementById('catatan').value.trim();
-                
-                // Format pesan WhatsApp
-                let paymentMethodText = '';
-                if (selectedPaymentMethod === 'qris') {
-                    paymentMethodText = 'QRIS';
-                } 
-                else if (selectedPaymentMethod === 'bca') {
-                    paymentMethodText = 'Bank BCA (1234567890)';
-                } 
-                else if (selectedPaymentMethod === 'bni') {
-                    paymentMethodText = 'Bank BNI (9876543210)';
-                }
-                
-                let message = `Halo Admin, saya sudah melakukan pembayaran dengan detail berikut:\n\n`;
-                message += `🔹 *Nomor Pesanan:* ${orderId}\n`;
-                message += `🔹 *Nama Pemesan:* ${nama}\n`;
-                message += `🔹 *No. WhatsApp:* ${wa}\n`;
-                message += `🔹 *Course yang dipilih:* ${course}\n`;
-                message += `🔹 *Metode Belajar:* ${metode}\n`;
-                message += `🔹 *Metode Pembayaran:* ${paymentMethodText}\n`;
-                message += `🔹 *Jumlah Pembayaran:* ${formatRupiah(hargaCourse)}\n`;
-                
-                if (catatan) {
-                    message += `🔹 *Catatan Tambahan:* ${catatan}\n`;
-                }
-                
-                message += `\nMohon konfirmasi pembayaran saya. Terima kasih.`;
-                
-                // Encode message untuk URL WhatsApp
-                const waNumber = '6285885850204'; // Ganti dengan nomor admin yang valid
-                const encodedMessage = encodeURIComponent(message);
-                const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
-                
-                // Buka WhatsApp
-                window.open(waUrl, '_blank');
-                
-                // Tampilkan konfirmasi dan reset form
-                showToast('Konfirmasi pembayaran berhasil! Silahkan selesaikan verifikasi di WhatsApp.');
-                clearInterval(countdownInterval);
-                resetForm();
-            });
-            
-            // Batalkan pesanan
-            document.getElementById('cancelOrder').addEventListener('click', function() {
-                if (confirm('Apakah Anda yakin ingin membatalkan pesanan ini?')) {
-                    clearInterval(countdownInterval);
-                    resetForm();
-                    showToast('Pesanan telah dibatalkan');
-                }
-            });
-            
-            // Fungsi reset form
-            function resetForm() {
-                document.getElementById('orderForm').classList.remove('hidden');
-                document.getElementById('reviewSection').classList.add('hidden');
-                document.getElementById('paymentDetails').classList.add('hidden');
-                document.getElementById('qrisPayment').classList.add('hidden');
-                document.getElementById('bankPayment').classList.add('hidden');
-                
-                // Reset pilihan pembayaran
-                document.querySelectorAll('.payment-method').forEach(m => {
-                    m.classList.remove('active');
-                });
-                selectedPaymentMethod = null;
-                
-                // Reset form (kecuali metode pembayaran)
-                document.getElementById('orderForm').reset();
-            }
-        });
+        function showPricing() {
+            document.getElementById('pricingModal').classList.remove('hidden')
+            document.getElementById('pricingModal').classList.add('flex')
+        }
+        function hidePricing() {
+            document.getElementById('pricingModal').classList.add('hidden')
+            document.getElementById('pricingModal').classList.remove('flex')
+        }
+
+        function showTestimonial() {
+            document.getElementById('testimonialModal').classList.remove('hidden')
+            document.getElementById('testimonialModal').classList.add('flex')
+        }
+        function hideTestimonial() {
+            document.getElementById('testimonialModal').classList.add('hidden')
+            document.getElementById('testimonialModal').classList.remove('flex')
+        }
+
+        function showAbout() {
+            document.getElementById('aboutModal').classList.remove('hidden')
+            document.getElementById('aboutModal').classList.add('flex')
+        }
+        function hideAbout() {
+            document.getElementById('aboutModal').classList.add('hidden')
+            document.getElementById('aboutModal').classList.remove('flex')
+        }
     </script>
 </body>
 </html>
